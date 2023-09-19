@@ -37,62 +37,68 @@ tener la opción de ver las estadísticas del juego donde se le mostrará un gr�
 de sus los intentos en cada juego realizado. El gráfico se debe poder enviar por correo electrónico.
 
 ## Modelo del mundo del problema 
-
+![modelo del mundo del problema](assets/modelo_del_mundo.drawio.png)
 
 
 ## Requisitos funcionales 
 
 ### R1 - Registrar jugador 
-| Nombre    |   | 
-|-----------|---|
-| Resumen   |   | 
-| Entradas  |   | 
-| Resultado |   | 
+|                          |                                                                                                                                                                                                                                                                                                                    | 
+|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Resumen                  | El sistema debe permitir registrar un jugador anes de iniciar la partida                                                                                                                                                                                                                                           | 
+| Entradas                 | -	Nombre de usuario <br/> -	Correo electrónico                                                                                                                                                                                                                                                                     |
+| Resultado                | 1.	El sistema mostrará un cuadro donde se le pedirá el nombre de usuario y su correo electrónico para enviarle los datos de sus partidas <br/> 2.	El sistema le mostrará un menú con las opciones de comenzar juego y de ver las reglas del juego<br/> 3.. El sistema mostrará un mensaje de bienvenida al usuario |
+                                                                        
 
 #### Descomposición del requisito
-| Pasos     | Métodos   | Responsable |
-|-----------|-----------|-------------|
-| Celda 1,1 | Celda 1,2 | Celda 1,3   |
-| Celda 2,1 | Celda 2,2 | Celda 2,3   |
-| Celda 3,1 | Celda 3,2 | Celda 3,3   |
+| Pasos             | Métodos                          | Responsable   |
+|-------------------|----------------------------------|---------------|
+| Registrar usuario | registrar_jugador()              | Nerdle        |
+| Crear usuario     | __init__(nombre_usuario, correo) | Jugador       |
+| Ver instruciones  | Instrucciones()                  | Instrucciones |
 
 
 ### R2 - Iniciar juego 
-| Nombre    |   | 
-|-----------|---|
-| Resumen   |   | 
-| Entradas  |   | 
-| Resultado |   | 
+|            |                                                                                                                                                                                                                                                                                                                 | 
+|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Resumen    | El sistema le va a permitir al usuario iniciar la partida                                                                                                                                                                                                                                                       | 
+| Entradas   | No hay entradas                                                                                                                                                                                                                                                                                                 | 
+| Resultado  | 1.	El sistema mostrará una cuadrilla de 6X8 vacía <br/> 2.	El sistema escogerá una secuencia de 8 elementos, pero no se la mostrará al usuario <br/> 3.	El sistema le permite al jugador ingresar en los cuadros de la cuadrilla los 8 elemento ya sean números, operaciones matemáticas y el signo de igualdad |
+                                                          
 
 #### Descomposición del requisito
-| Pasos     | Métodos   | Responsable |
-|-----------|-----------|-------------|
-| Celda 1,1 | Celda 1,2 | Celda 1,3   |
-| Celda 2,1 | Celda 2,2 | Celda 2,3   |
-| Celda 3,1 | Celda 3,2 | Celda 3,3   |
+| Pasos                                                        | Métodos            | Responsable |
+|--------------------------------------------------------------|--------------------|-------------|
+| Se escoge una secuencia de elementos, oculta para el jugador | Generar_ecuacion() | Ecuacion    |
+| Permite al usuario registrar una entrada en las cuadrillas   | Recibir()          | Ecuación    |
 
 
 ### R3 - Hacer jugada 
-| Nombre    |   | 
-|-----------|---|
-| Resumen   |   | 
-| Entradas  |   | 
-| Resultado |   | 
+|              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Resumen      | El sistema le permitirá al usuario jugar hasta que quede sin intentos que le permitan seguir jugando                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
+| Entradas     | -	Ecuación ingresada por el usuario                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 
+| Resultado    | 1.	El sistema permitirá que el jugador ingrese los elementos que encuentre pertinentes en las casillas correspondientes <br/> 2.	El sistema comparará los elementos dados por el usuario con la secuencia original <br/> 3.	El sistema pintará cada cuadro de la cuadrilla según corresponda.<br/>3.1.	Si el elemento de la cuadrilla esta correcto y en la posición correcta se pintara el cuadro de color verde <br/>3.2.	Si elemento de la cuadrilla está correcto, pero está en la posición incorrecta se pintará el cuadro de color amarillo <br/> 3.3.	Si elemento de la cuadrilla es incorrecto se pintará el cuadro de color gris. 4.	Se confirman los intentos restantes <br/> 4.1.	Si el jugador adivina la secuencia entre los intentos restantes el sistema mostrará un mensaje indicando que ha ganado el juego <br/>4.2.	Si el jugador no adivina la secuencia y se le acaban los intentos restantes el sistema le mostrará un mensaje indicando que ha perdido <br/> 5.	Si el jugador adivina la secuencia se ejecuta el R4 |
 
 #### Descomposición del requisito
-| Pasos     | Métodos   | Responsable |
-|-----------|-----------|-------------|
-| Celda 1,1 | Celda 1,2 | Celda 1,3   |
-| Celda 2,1 | Celda 2,2 | Celda 2,3   |
-| Celda 3,1 | Celda 3,2 | Celda 3,3   |
+| Pasos                                                                             | Métodos                                       | Responsable       |
+|-----------------------------------------------------------------------------------|-----------------------------------------------|-------------------|
+| Se comprueba si la secuencia o ecuación tiene congruencia                         | Revisar_congruencia()                         | Retroalimentacion |
+| Comparar la secuencia original con lo ingresado por el usuario                    | Comparar_ecuaciones(elementos, ecuación)      | Nerdle            |
+| El sistema verificara los elementos atreves de la retroalimentación               | Retroalimentar()                              | Retroalimentacion |
+| Si el elemento es correcto, en la posición correcta se pintara de verde           | Elementos_correctos() -> bool, int            | Retroalimentacion |
+| Si el elemento es correcto, pero en la posición incorrecta se pintara de amarillo | Elementos_posición_incorrectos() -> bool, int | Retroalimentacion |
+| Si el elemento es incorrecto, se pintara de gris                                  | Elementos_incorrectos() -> bool, int          | Retroalimentacion |
+| Se revisan los intentos restantes                                                 | Numero_intentos                               | Nerdle            |
+| Se mostrara la secuencia original                                                 | Mostrar_secuencia()                           | Ecuación          |
 
 
 ### R4 - Finalizar juego
-| Nombre    |   | 
-|-----------|---|
-| Resumen   |   | 
-| Entradas  |   | 
-| Resultado |   |
+|           |                                                                                                                                                                                                                                                                                  | 
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Resumen   | El sistema le permitirá salir de la partida al jugador en cualquier momento                                                                                                                                                                                                      | 
+| Entradas  | -	No hay entradas                                                                                                                                                                                                                                                                | 
+| Resultado | 1.	El sistema le mostrara la misma secuencia correcta en el mismo mensaje que ha perdido <br/> 2.	Se mostrarán y almacenarán las estadísticas del juego (se llama el requisito R5) <br/> 3.	El sistema le mostrara un menú con las opciones de jugar de nuevo o salir del juego. |
 
 #### Descomposición del requisito
 | Pasos     | Métodos   | Responsable |
@@ -102,12 +108,12 @@ de sus los intentos en cada juego realizado. El gráfico se debe poder enviar po
 | Celda 3,1 | Celda 3,2 | Celda 3,3   |
 
 
-### R5 - Ver estadísticas 
-| Nombre    |   | 
-|-----------|---|
-| Resumen   |   | 
-| Entradas  |   | 
-| Resultado |   | 
+### R5 - Cargar estadísticas 
+|           |                                                                                                                                                                                                                                                                                                                                                                                       | 
+|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Resumen   | El sistema guardara las estadísticas del juego al jugador                                                                                                                                                                                                                                                                                                                             | 
+| Entradas  | -	No hay entradas                                                                                                                                                                                                                                                                                                                                                                     | 
+| Resultado | 1.	El jugador podrá acceder a estas estadísticas por medio de un menú <br/> 2.	El sistema previamente almacenará la información de las partidas realizadas <br/> 3.	El jugador al darle a la opción de estadísticas verá un gráfico que representará sus partidas <br/> 4.	En las estadísticas se encontrará la opción de enviar los resultados por medio del correo registrado en R1 |
 
 #### Descomposición del requisito
 | Pasos     | Métodos   | Responsable |
