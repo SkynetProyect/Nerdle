@@ -4,10 +4,6 @@ import random
 
 @dataclass
 
-class Instruccion:
-    def intrucciones(self):
-        pass # como lo pondriamos?
-
 class Jugador:
     def registrar_jugador(self):
         pass # no seria con una base de datos?
@@ -30,16 +26,16 @@ class Estadistica:
     def registar_datos(self):
         pass
 
-    def retornar_datos(self):
+    def actualizar_estadisticas(self):
         pass # es necesario?
 
-    def actualizar_grafico(self):
+    def enviar_estadisticas(self):
         pass
 
 class Ecuacion:
 
     def generar_ecuacion(self,):
-        ecuacion = dict(numeros=[random.randint(0, 9) for _ in range(8)], \
+        ecuacion = dict(numeros=[random.randint(0, 9) for _ in range(8)],
                         operadores=[random.choice(["+", "-", "*", "/"]) for _ in range(7)])
         ecuacion = f"{dict:numeros[0]}"
         for i in range(7):
@@ -51,6 +47,7 @@ class Ecuacion:
 print(f"Ecuación: {Ecuacion.ecuacion}")
 print(f"Resultado: {Ecuacion.resultado}")
 
+# no se si esta bien, no creo
 
 class Retroalimentacion:
     def revisar_congruencia(self):
