@@ -1,12 +1,34 @@
+
+verde = 94, 204, 42
+amarillo = 237, 255, 20
+gris = 83, 83, 83
+gris_claro = 236, 236, 236
+
 from dataclasses import dataclass
 import random
-
 
 @dataclass
 
 class Jugador:
     def registrar_jugador(self):
-        pass # no seria con una base de datos?
+
+        nombre_usuario = []
+        usuario = input("Ingrese su nombre: ")
+        nombre_usuario.append(usuario)
+
+        print("su nombre es:")   # para verificar si funciono
+        for elemento in nombre_usuario:
+            print(elemento)
+
+        correo_usuario = []
+        usuario = input("Ingrese su correo: ")    #si lo vuelvo a hacer con usuario se sobre escribe?
+        correo_usuario.append(usuario)
+
+        print("su correo es:")   # para verificar si funciono
+        for elemento in correo_usuario:
+            print(elemento)
+
+
 
 class Nerdle:
     def comprobar_ecuacion(self):
@@ -27,7 +49,7 @@ class Estadistica:
         pass
 
     def actualizar_estadisticas(self):
-        pass # es necesario?
+        pass
 
     def enviar_estadisticas(self):
         pass
@@ -53,10 +75,26 @@ class Retroalimentacion:
     def revisar_congruencia(self):
         pass
 
-    def retroalimentar(self):
-        pass
-    # condicional para los colores
 
+    def retroalimentar(self, ecuacion_original: Ecuacion, ecuacion_recibida):
+
+        List = ["", "", "", "", "", "", "", ""]
+        color_codigo = [gris_claro, gris_claro, gris_claro, gris_claro, gris_claro, gris_claro, gris_claro, gris_claro]
+
+        for x in range(0, 9):
+            if ecuacion_recibida[x] in ecuacion_original:
+                color_codigo[x] = amarillo
+
+            if ecuacion_original[x] == ecuacion_recibida[x]:
+                color_codigo[x] = verde
+
+        list(ecuacion_recibida)
+
+        for x in range(0, 9):
+            List[x] = (ecuacion_recibida[x], True, gris)
+
+        if color_codigo == [verde, verde, verde, verde, verde, verde, verde, verde]:
+            return True
 
 
 
