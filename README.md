@@ -54,11 +54,13 @@ de sus los intentos en cada juego realizado. El gráfico se debe poder enviar po
                                                                         
 
 #### Descomposición del requisito
-| Pasos             | Métodos                          | Responsable     |
-|-------------------|----------------------------------|-----------------|
-| Registrar usuario | registrar_jugador()              | Nerdle          |
-| Crear usuario     | __init__(nombre_usuario, correo) | Jugador         |
-| Ver instruciones  | mostrar_instrucciones()          | Jugador, Nerdle |
+| Pasos             | Métodos                     | Responsable     |
+|-------------------|-----------------------------|-----------------|
+| Registrar usuario | registrar_jugador()         | Nerdle          |
+| Crear usuario     | __init__( )                 | Jugador         |
+| registrar nombre  | registrar_nombre_jugador( ) | Jugador         |
+| registrar correo  | registrar_correo_jugador( ) | Jugador         |
+| Ver instruciones  | mostrar_instrucciones()     | Jugador, Nerdle |
 
 
 ### R2 - Iniciar juego 
